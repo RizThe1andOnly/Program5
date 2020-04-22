@@ -1,5 +1,6 @@
 package com.example.bmiapp;
 
+import android.view.View;
 import android.widget.EditText;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
@@ -19,11 +20,18 @@ public class BMIActivity extends AppCompatActivity {
     //constants used for some of the following procedures:
     private final String TWO_DECIMAL_PLACES_FORMATTER = "%.2f";
 
-    //declarations for elements reponsible for input
+    //fields for calculation and info storage purposes:
+    private double userWeight;
+    private double userHeight;
+    private boolean isMetric;
+    private BMI userBMIData;
+
+    //declarations for elements responsible for input
     private RadioGroup unitButtons;
     private EditText weightField;
     private EditText heightField;
     private TextView bmiOutput;
+    private RadioButton metricButton;
 
     /**
      * the functionalities that run as soon as the page starts; includes setting default values as well as providing this
@@ -52,6 +60,7 @@ public class BMIActivity extends AppCompatActivity {
         weightField = (EditText) findViewById(R.id.enterWeightField);
         heightField = (EditText) findViewById(R.id.enterHeightField);
         bmiOutput = (TextView) findViewById(R.id.bmiView);
+        metricButton = (RadioButton) findViewById(R.id.metricUnits);
     }
 
 
@@ -62,6 +71,7 @@ public class BMIActivity extends AppCompatActivity {
     private void initializeDefaultValues(){
         hintSetter(); //sets the hints for the input text fields at program's start
         setDefaultBMIReading();
+
     }
 
 
@@ -93,5 +103,80 @@ public class BMIActivity extends AppCompatActivity {
         float defVal = 0;
         CharSequence bmiOutputText = String.format(TWO_DECIMAL_PLACES_FORMATTER,String.valueOf(defVal));
         bmiOutput.setText(bmiOutputText);
+    }
+
+
+    /**
+     * provides the user with BMI value when BMI button pressed. Will also conduct checks for proper input through
+     * validInputFields() method.
+     * @param view instance of the bmi activity that calls this method thru button press
+     * @author Rizwan Chowdhury
+     * @author Tin Fung
+     */
+    public void getBmiButtonClick(View view){
+        this.isMetric = areUnitsMetric();
+
+        if(!validInputFields()){ //input is not valid: do nothing except for sending error message
+            // !!! NEEDS TO BE COMPLETED: USE TOAST CLASS TO SEND ERROR MESSAGE TO USER
+
+            return;
+        }
+
+        this.userBMIData = new BMI(this.userWeight,this.userHeight,this.isMetric);
+    }
+
+
+    /**
+     * Sets the isMetric field of object based on radio button selection.
+     * @return true if kg/cm radio button is selected; false otherwise
+     * @author Rizwan Chowdhury
+     * @author Tin Fung
+     */
+    private boolean areUnitsMetric(){
+        return metricButton.isSelected();
+    }
+
+
+    /**
+     * Checks for valid input. Valid input includes having any input at all and having numeric input.
+     * @return true if the input is valid; false otherwise
+     *
+     * @author Rizwan Chowdhury
+     * @author Tin Fung
+     */
+    private boolean validInputFields(){
+        //get contents of the input field
+        String weightFieldContent = this.weightField.getText().toString();
+        String heightFieldContent = this.heightField.getText().toString();
+
+        //check if the input fields have been filled
+        if( (weightFieldContent.equals("")) || (heightFieldContent.equals("")) ){//no input at all
+            return false;
+        }
+
+        //check if inputs are in proper numeric format
+        try{
+            validNumericFormat(weightFieldContent,heightFieldContent);
+        }catch (NumberFormatException e){ //means input is not valid, hence false is returned for valid input
+            return false;
+        }
+
+        return true; //at this point input is valid
+    }
+
+
+    /**
+     * Verifies whether the input has proper numeric format. If there is proper numeric format the method will
+     * set the associated class variables with those values.
+     * @param weightContent string form of the weight input received from the user
+     * @param heightContent string form of the height input received from the user
+     * @throws NumberFormatException exception if the input is not in proper numeric format
+     *
+     * @author Rizwan Chowdhury
+     * @author Tin Fung
+     */
+    private void validNumericFormat(String weightContent, String heightContent) throws NumberFormatException{
+        this.userWeight = Double.parseDouble(weightContent);
+        this.userHeight = Double.parseDouble(heightContent);
     }
 }

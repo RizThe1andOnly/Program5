@@ -8,5 +8,10 @@
     <string name="WEIGHT_ENGLISH_HINT">Enter Weight in pounds(lbs)</string>
     <string name="HEIGHT_METRIC_HINT">Enter Height in centimeters(cm)</string>
     <string name="HEIGHT_ENGLISH_HINT">Enter Height in inches(in)</string>
-    <string name="TWO_DECIMAL_PLACES_FORMATTER">%.2f</string>
+    <string name="UNDERWEIGHT_ADVICE">Underweight</string>
+    <string name="NORMALWEIGHT_ADVICE">Normal Weight: \nTry Not To Gain More Weight</string>
+    <string name="OVERWEIGHT_ADVICE">Over Weight: \nBe sure not to gain more weight.\nLose weight if you have two or more heart disease
+        risk factors.\nAsk your doctor or a registered dietitian for help.</string>
+    <string name="OBESE_ADVICE">Obese: \nYou need to lose weight. Take steps to lose 1 to 2 pounds per week.\nAsk your doctor or a
+        registered dietitian for help</string>
 </resources>

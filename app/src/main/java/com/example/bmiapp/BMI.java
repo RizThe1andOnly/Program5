@@ -11,29 +11,34 @@ package com.example.bmiapp;
 public class BMI {
 
     //fields to hold user-specific data:
-    private float userWeight;
-    private float userHeight;
+    private double userWeight;
+    private double userHeight;
     private boolean isMetric;
-    private float BMI;
-    private int adviceStringID;
-    private int adviceImageID;
+    private double BMI;
 
     //constant required for calculations:
-    private float WEIGHT_ADJUSTMENT_FOR_POUNDS = 703;
+    private final int WEIGHT_ADJUSTMENT_FOR_POUNDS = 703;
+    private final double NORMAL_WEIGHT_BMI = 18.5;
+    private final double OVERWEIGHT_BMI = 25;
+    private final double OBESE_BMI = 30;
 
-    //the advice and image paths that will be used for the programs:
-      ///  !!! NEEDS TO BE DONE (add in the proper strings and paths as constants)
+    //constants for classification:
+    private final String NORMAL_WEIGHT = "Normal";
+    private final String UNDER_WEIGHT = "Under Weight";
+    private final String OVER_WEIGHT = "Over Weight";
+    private final String OBESE = "Obese";
 
     /**
      * Constructor for class which will create a BMI object by taking user weight and height as arguments.
      * This method will only store the value in fields, to get BMI values or advice the
      * @param weight weight of the user either in pounds or kilograms
      * @param height height of the user either in inches or centimeters
+     * @param isMetric are the given units in metric units or not (english units)
      *
      * @author Rizwan Chowdhury
      * @author Tin Fung
      */
-    public BMI(float weight, float height, boolean isMetric){
+    public BMI(double weight, double height, boolean isMetric){
         this.userWeight = weight;
         this.userHeight = height;
         this.isMetric = isMetric;
@@ -42,67 +47,43 @@ public class BMI {
 
     /**
      * Will calculate and return the BMI of the user.
-     * @return user's BMI as a float
+     * @return user's BMI as a double
      * @author Rizwan Chowdhury
      * @author Tin Fung
      */
-    public float getBMI(){
-        float adjustedWeight = this.userWeight;
+    public double getBMI(){
+        double adjustedWeight = this.userWeight;
         if(!this.isMetric){
             adjustedWeight = adjustedWeight * WEIGHT_ADJUSTMENT_FOR_POUNDS;
         }
 
-        float bmiVal = adjustedWeight/(this.userHeight*this.userHeight);
+        double bmiVal = adjustedWeight/(this.userHeight*this.userHeight);
 
-        //set the advice items
-        setAdvice(bmiVal);
-        setAdviceImage(bmiVal);
-
+        //sets the bmi value of class
+        this.BMI = bmiVal;
         return bmiVal;
     }
 
 
     /**
-     * Will set the advice field of this class based on the bmi
-     * @param bmi user's bmi value
+     * Will set the advice  of this class based on the bmi
+     * @return string indicating the class of bmi user belongs to
      * @author Rizwan Chowdhury
      * @author Tin Fung
      */
-    private void setAdvice(float bmi){
-        // !!! NEEDS TO BE COMPLETED
+    private String getAdvice(){
+        if(this.BMI<NORMAL_WEIGHT_BMI){
+            return UNDER_WEIGHT;
+        }
+        else if(this.BMI<OVERWEIGHT_BMI){
+            return NORMAL_WEIGHT;
+        }
+        else if(this.BMI<OBESE_BMI){
+            return OVER_WEIGHT;
+        }
+        else{
+            return OBESE;
+        }
     }
 
-
-    /**
-     * Will set the advice image field of this object based on the bmi
-     * @param bmi user's bmi value
-     * @author Rizwan Chowdhury
-     * @author Tin Fung
-     */
-    private void setAdviceImage(float bmi){
-        // !!! NEEDS TO BE COMPLETED
-    }
-
-
-    /**
-     * Will return the string id of the appropriate advice based on user's bmi
-     * @return id of the advice for the user
-     * @author Rizwan Chowdhury
-     * @author Tin Fung
-     */
-    public int getAdviceID(){
-        return this.adviceStringID;
-    }
-
-
-    /**
-     * Will return the image id (in resources) of the image that corresponds to the advice the user
-     * is receiving
-     * @return resource id of the image
-     * @author Rizwan Chowdhury
-     * @author Tin Fung
-     */
-    public int getAdviceImageID(){
-        return this.adviceImageID;
-    }
 }
