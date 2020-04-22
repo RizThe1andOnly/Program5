@@ -1,0 +1,12 @@
+<resources>
+    <string name="app_name">BMIApp</string>
+    <string name="WEIGHT_LABEL_FIELD">WEIGHT:</string>
+    <string name="HEIGHT_LABEL_FIELD">HEIGHT:</string>
+    <string name="BMI_LABEL_FIELD">BMI</string>
+    <string name="GET_ADVICE_LABEL_FIELD">Get Advice</string>
+    <string name="WEIGHT_METRIC_HINT">Enter Weight in kilograms(kg)</string>
+    <string name="WEIGHT_ENGLISH_HINT">Enter Weight in pounds(lbs)</string>
+    <string name="HEIGHT_METRIC_HINT">Enter Height in centimeters(cm)</string>
+    <string name="HEIGHT_ENGLISH_HINT">Enter Height in inches(in)</string>
+    <string name="TWO_DECIMAL_PLACES_FORMATTER">%.2f</string>
+</resources>
