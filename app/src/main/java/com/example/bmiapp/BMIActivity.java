@@ -1,10 +1,8 @@
 package com.example.bmiapp;
 
+import android.content.Context;
 import android.view.View;
-import android.widget.EditText;
-import android.widget.RadioButton;
-import android.widget.RadioGroup;
-import android.widget.TextView;
+import android.widget.*;
 import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 
@@ -17,6 +15,9 @@ import android.os.Bundle;
  */
 public class BMIActivity extends AppCompatActivity {
 
+    //context for this activity:
+    private Context bmiAppContext;
+
     //constants used for some of the following procedures:
     private final String TWO_DECIMAL_PLACES_FORMATTER = "%.2f";
 
@@ -25,13 +26,16 @@ public class BMIActivity extends AppCompatActivity {
     private double userHeight;
     private boolean isMetric;
     private BMI userBMIData;
+    private boolean bmiButtonPressed; //checks if bmiButton is pressed or not (for controlling getAdvice button)
 
     //declarations for elements responsible for input
     private RadioGroup unitButtons;
     private EditText weightField;
     private EditText heightField;
-    private TextView bmiOutput;
     private RadioButton metricButton;
+
+    //output elements:
+    private TextView bmiOutput;
 
     /**
      * the functionalities that run as soon as the page starts; includes setting default values as well as providing this
@@ -44,6 +48,7 @@ public class BMIActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_bmi);
+        bmiAppContext = getApplicationContext();
         initializeElements(); //sets the declared values to their respective elements
         initializeDefaultValues();//initialize the declared elements with their on-screen counterparts
 
@@ -71,7 +76,8 @@ public class BMIActivity extends AppCompatActivity {
     private void initializeDefaultValues(){
         hintSetter(); //sets the hints for the input text fields at program's start
         setDefaultBMIReading();
-
+        this.userBMIData = null;
+        this.bmiButtonPressed = false; //indicated bmi button has not been pressed
     }
 
 
@@ -101,7 +107,7 @@ public class BMIActivity extends AppCompatActivity {
      */
     private void setDefaultBMIReading(){
         float defVal = 0;
-        CharSequence bmiOutputText = String.format(TWO_DECIMAL_PLACES_FORMATTER,String.valueOf(defVal));
+        CharSequence bmiOutputText = String.format(TWO_DECIMAL_PLACES_FORMATTER,defVal);
         bmiOutput.setText(bmiOutputText);
     }
 
@@ -117,12 +123,15 @@ public class BMIActivity extends AppCompatActivity {
         this.isMetric = areUnitsMetric();
 
         if(!validInputFields()){ //input is not valid: do nothing except for sending error message
-            // !!! NEEDS TO BE COMPLETED: USE TOAST CLASS TO SEND ERROR MESSAGE TO USER
-
+            Toast.makeText(bmiAppContext,R.string.INVALID_INPUT,Toast.LENGTH_SHORT);
             return;
         }
 
         this.userBMIData = new BMI(this.userWeight,this.userHeight,this.isMetric);
+        double userBmi = this.userBMIData.getBMI();
+        CharSequence userBmiCharSeq = String.format(TWO_DECIMAL_PLACES_FORMATTER,userBmi);
+        this.bmiOutput.setText(userBmiCharSeq);
+        this.bmiButtonPressed = true;
     }
 
 
@@ -161,6 +170,11 @@ public class BMIActivity extends AppCompatActivity {
             return false;
         }
 
+        //check if any input is just zero or below:
+        if(isZeroOrLower()){
+            return false;
+        }
+
         return true; //at this point input is valid
     }
 
@@ -178,5 +192,37 @@ public class BMIActivity extends AppCompatActivity {
     private void validNumericFormat(String weightContent, String heightContent) throws NumberFormatException{
         this.userWeight = Double.parseDouble(weightContent);
         this.userHeight = Double.parseDouble(heightContent);
+    }
+
+
+    /**
+     * Helper method to check if any of the inputs are zero or lower.
+     * @return true if zero or lower, false otherwise
+     * @author Rizwan Chowdhury
+     * @author Tin Fung
+     */
+    private boolean isZeroOrLower(){
+        if( (this.userHeight <= 0) || (this.userWeight <= 0) ){
+            return true;
+        }
+        return false;
+    }
+
+
+    /**
+     * Upon pressing of the get advice button new screen will open showing user the appropriate message and image based
+     * on their bmi.
+     * @param view instance of the bmi screen calling this method
+     * @author Rizwan Chowdhury
+     * @author Tin Fung
+     */
+    public void getAdviceButtonPress(View view){
+        if(!this.bmiButtonPressed){
+            Toast.makeText(bmiAppContext,R.string.ADVICE_BUTTON_PRESS_BEFORE_BMI,Toast.LENGTH_SHORT);
+            return;
+        }
+
+        CharSequence tempMessage = "will finish later";
+        Toast.makeText(bmiAppContext,tempMessage,Toast.LENGTH_SHORT);
     }
 }

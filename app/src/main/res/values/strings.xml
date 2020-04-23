@@ -2,7 +2,7 @@
     <string name="app_name">BMIApp</string>
     <string name="WEIGHT_LABEL_FIELD">WEIGHT:</string>
     <string name="HEIGHT_LABEL_FIELD">HEIGHT:</string>
-    <string name="BMI_LABEL_FIELD">BMI</string>
+    <string name="BMI_LABEL_FIELD">Get BMI</string>
     <string name="GET_ADVICE_LABEL_FIELD">Get Advice</string>
     <string name="WEIGHT_METRIC_HINT">Enter Weight in kilograms(kg)</string>
     <string name="WEIGHT_ENGLISH_HINT">Enter Weight in pounds(lbs)</string>
@@ -14,4 +14,7 @@
         risk factors.\nAsk your doctor or a registered dietitian for help.</string>
     <string name="OBESE_ADVICE">Obese: \nYou need to lose weight. Take steps to lose 1 to 2 pounds per week.\nAsk your doctor or a
         registered dietitian for help</string>
+
+    <string name="INVALID_INPUT">Bad Input,Please Try Again</string>
+    <string name="ADVICE_BUTTON_PRESS_BEFORE_BMI">Please Press Get BMI button First</string>
 </resources>
