@@ -62,22 +62,25 @@ public class AdviceActivity extends AppCompatActivity {
 
         if(bmiClass.equals(NORMAL_WEIGHT)){
             adviceTextView.setText(R.string.NORMALWEIGHT_ADVICE);
-
+            adviceImageView.setImageResource(R.drawable.Normal);
             return;
         }
 
         if(bmiClass.equals(UNDER_WEIGHT)){
             adviceTextView.setText(R.string.UNDERWEIGHT_ADVICE);
+            adviceImageView.setImageResource(R.drawable.Underweight);
             return;
         }
 
         if(bmiClass.equals(OVER_WEIGHT)){
             adviceTextView.setText(R.string.OVERWEIGHT_ADVICE);
+            adviceImageView.setImageResource(R.drawable.Overweight);
             return;
         }
 
         if(bmiClass.equals(OBESE)){
             adviceTextView.setText(R.string.OBESE_ADVICE);
+            adviceImageView.setImageResource(R.drawable.Obese);
             return;
         }
     }
