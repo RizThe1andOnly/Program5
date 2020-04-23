@@ -47,7 +47,7 @@ public class BMIActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_bmi);
+        setContentView(R.layout.activity_main);
         bmiAppContext = getApplicationContext();
         initializeElements(); //sets the declared values to their respective elements
         initializeDefaultValues();//initialize the declared elements with their on-screen counterparts
@@ -123,7 +123,7 @@ public class BMIActivity extends AppCompatActivity {
         this.isMetric = areUnitsMetric();
 
         if(!validInputFields()){ //input is not valid: do nothing except for sending error message
-            Toast.makeText(bmiAppContext,R.string.INVALID_INPUT,Toast.LENGTH_SHORT);
+            Toast.makeText(bmiAppContext,R.string.INVALID_INPUT,Toast.LENGTH_SHORT).show();
             return;
         }
 
@@ -218,11 +218,23 @@ public class BMIActivity extends AppCompatActivity {
      */
     public void getAdviceButtonPress(View view){
         if(!this.bmiButtonPressed){
-            Toast.makeText(bmiAppContext,R.string.ADVICE_BUTTON_PRESS_BEFORE_BMI,Toast.LENGTH_SHORT);
+            Toast.makeText(bmiAppContext,R.string.ADVICE_BUTTON_PRESS_BEFORE_BMI,Toast.LENGTH_SHORT).show();
             return;
         }
 
         CharSequence tempMessage = "will finish later";
-        Toast.makeText(bmiAppContext,tempMessage,Toast.LENGTH_SHORT);
+        Toast.makeText(bmiAppContext,tempMessage,Toast.LENGTH_SHORT).show();
+    }
+
+
+    /**
+     * When radio button for either english units or metric units is selected the hints in edit text
+     * will change to reflect new selection.
+     * @param view Instance of the view that calls this method
+     * @author Rizwan Chowdhury
+     * @author Tin Fung
+     */
+    public void changeHint(View view){
+           hintSetter();
     }
 }
