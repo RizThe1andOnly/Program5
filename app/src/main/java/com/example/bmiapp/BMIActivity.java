@@ -1,6 +1,7 @@
 package com.example.bmiapp;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.View;
 import android.widget.*;
 import androidx.appcompat.app.AppCompatActivity;
@@ -20,6 +21,7 @@ public class BMIActivity extends AppCompatActivity {
 
     //constants used for some of the following procedures:
     private final String TWO_DECIMAL_PLACES_FORMATTER = "%.2f";
+    private final String USER_BMI_CLASSIFICATION = "BMIClass";
 
     //fields for calculation and info storage purposes:
     private double userWeight;
@@ -211,7 +213,8 @@ public class BMIActivity extends AppCompatActivity {
 
     /**
      * Upon pressing of the get advice button new screen will open showing user the appropriate message and image based
-     * on their bmi.
+     * on their bmi. Will create an intent object and use it to pass the bmi classification as well as start the new
+     * activity.
      * @param view instance of the bmi screen calling this method
      * @author Rizwan Chowdhury
      * @author Tin Fung
@@ -222,8 +225,9 @@ public class BMIActivity extends AppCompatActivity {
             return;
         }
 
-        CharSequence tempMessage = "will finish later";
-        Toast.makeText(bmiAppContext,tempMessage,Toast.LENGTH_SHORT).show();
+        Intent adviceActivityIntent = new Intent(this,AdviceActivity.class);
+        adviceActivityIntent.putExtra(USER_BMI_CLASSIFICATION,userBMIData.getAdvice());
+        startActivity(adviceActivityIntent);
     }
 
 

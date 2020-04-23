@@ -71,7 +71,7 @@ public class BMI {
      * @author Rizwan Chowdhury
      * @author Tin Fung
      */
-    private String getAdvice(){
+    public String getAdvice(){
         if(this.BMI<NORMAL_WEIGHT_BMI){
             return UNDER_WEIGHT;
         }

@@ -16,6 +16,10 @@
                 <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
         </activity>
+        <activity android:name=".AdviceActivity"
+                  android:label = "@string/ADVICE_SCREEN_TITLE"
+                  android:parentActivityName=".BMIActivity">
+        </activity>
     </application>
 
 </manifest>

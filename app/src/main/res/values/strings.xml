@@ -17,4 +17,5 @@
 
     <string name="INVALID_INPUT">Bad Input,Please Try Again</string>
     <string name="ADVICE_BUTTON_PRESS_BEFORE_BMI">Please Press Get BMI button First</string>
+    <string name="ADVICE_SCREEN_TITLE">Advice</string>
 </resources>
