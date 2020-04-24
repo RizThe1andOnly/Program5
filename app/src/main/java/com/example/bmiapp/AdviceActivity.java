@@ -6,6 +6,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import androidx.appcompat.app.AppCompatActivity;
 
+
 /**
  * Class to control the advice activity screen. Will be responsible for presenting the advice and image associated
  * with the current user's bmi.
@@ -17,10 +18,10 @@ public class AdviceActivity extends AppCompatActivity {
 
     //constants necessary for functionalities:
     private final String USER_BMI_CLASSIFICATION = "BMIClass";
-    private final String NORMAL_WEIGHT = "normal";
+    private final String NORMAL_WEIGHT = "Normal";
     private final String UNDER_WEIGHT = "Under Weight";
     private final String OVER_WEIGHT = "Over Weight";
-    private final String OBESE = "obese";
+    private final String OBESE = "Obese";
 
     //declaration of view elements that will be used by this class:
     private ImageView adviceImageView;
