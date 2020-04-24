@@ -17,10 +17,10 @@ public class AdviceActivity extends AppCompatActivity {
 
     //constants necessary for functionalities:
     private final String USER_BMI_CLASSIFICATION = "BMIClass";
-    private final String NORMAL_WEIGHT = "Normal";
+    private final String NORMAL_WEIGHT = "normal";
     private final String UNDER_WEIGHT = "Under Weight";
     private final String OVER_WEIGHT = "Over Weight";
-    private final String OBESE = "Obese";
+    private final String OBESE = "obese";
 
     //declaration of view elements that will be used by this class:
     private ImageView adviceImageView;
@@ -62,25 +62,25 @@ public class AdviceActivity extends AppCompatActivity {
 
         if(bmiClass.equals(NORMAL_WEIGHT)){
             adviceTextView.setText(R.string.NORMALWEIGHT_ADVICE);
-            adviceImageView.setImageResource(R.drawable.Normal);
+            adviceImageView.setImageResource(R.drawable.normal);
             return;
         }
 
         if(bmiClass.equals(UNDER_WEIGHT)){
             adviceTextView.setText(R.string.UNDERWEIGHT_ADVICE);
-            adviceImageView.setImageResource(R.drawable.Underweight);
+            adviceImageView.setImageResource(R.drawable.underweight);
             return;
         }
 
         if(bmiClass.equals(OVER_WEIGHT)){
             adviceTextView.setText(R.string.OVERWEIGHT_ADVICE);
-            adviceImageView.setImageResource(R.drawable.Overweight);
+            adviceImageView.setImageResource(R.drawable.overweight);
             return;
         }
 
         if(bmiClass.equals(OBESE)){
             adviceTextView.setText(R.string.OBESE_ADVICE);
-            adviceImageView.setImageResource(R.drawable.Obese);
+            adviceImageView.setImageResource(R.drawable.obese);
             return;
         }
     }

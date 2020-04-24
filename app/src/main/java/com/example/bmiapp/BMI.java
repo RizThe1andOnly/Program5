@@ -23,10 +23,10 @@ public class BMI {
     private final double OBESE_BMI = 30;
 
     //constants for classification:
-    private final String NORMAL_WEIGHT = "Normal";
+    private final String NORMAL_WEIGHT = "normal";
     private final String UNDER_WEIGHT = "Under Weight";
     private final String OVER_WEIGHT = "Over Weight";
-    private final String OBESE = "Obese";
+    private final String OBESE = "obese";
 
     /**
      * Constructor for class which will create a BMI object by taking user weight and height as arguments.
