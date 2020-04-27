@@ -132,10 +132,6 @@ public class BMIActivity extends AppCompatActivity {
         this.userBMIData = new BMI(this.userWeight,this.userHeight,this.isMetric);
         double userBmi = this.userBMIData.getBMI();
         CharSequence userBmiCharSeq = String.format(TWO_DECIMAL_PLACES_FORMATTER,userBmi);
-            if(this.isMetric){
-                Toast.makeText(bmiAppContext,"",Toast.LENGTH_SHORT).show();
-
-            }
         this.bmiOutput.setText(userBmiCharSeq);
         this.bmiButtonPressed = true;
     }

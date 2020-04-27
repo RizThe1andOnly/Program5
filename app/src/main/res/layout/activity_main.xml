@@ -14,22 +14,22 @@
             android:layout_marginTop="44dp" android:id="@+id/unitsGroup" android:checkedButton="@id/englishUnits">
 
         <RadioButton
-            android:id="@+id/englishUnits"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:clickable="true"
-            android:fitsSystemWindows="false"
-            android:onClick="changeHint"
-            android:text="lbs/inches" />
+                android:id="@+id/englishUnits"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:clickable="true"
+                android:fitsSystemWindows="false"
+                android:onClick="changeHint"
+                android:text="@string/ENGLISH_RADIOBUTTON"/>
 
         <RadioButton
-            android:id="@+id/metricUnits"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:onClick="changeHint"
-            android:text="kg/cm" />
+                android:id="@+id/metricUnits"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:onClick="changeHint"
+                android:text="@string/METRIC_RADIOBUTTON"/>
     </RadioGroup>
 
     <TableLayout
@@ -60,7 +60,7 @@
                 android:layout_width="317dp"
                 android:layout_height="wrap_content"
                 android:ems="10"
-                android:inputType="number" />
+                android:inputType="numberDecimal" />
         </TableRow>
 
         <TableRow
@@ -81,7 +81,7 @@
                 android:layout_width="317dp"
                 android:layout_height="wrap_content"
                 android:ems="10"
-                android:inputType="number" />
+                android:inputType="numberDecimal" />
         </TableRow>
     </TableLayout>
     <Button
@@ -89,17 +89,17 @@
             android:layout_width="132dp"
             android:layout_height="50dp" android:id="@+id/calcBMIButton"
             app:layout_constraintStart_toStartOf="parent" android:layout_marginStart="32dp"
-            app:layout_constraintTop_toBottomOf="@+id/tableLayout" android:layout_marginTop="92dp"
+            app:layout_constraintTop_toBottomOf="@+id/tableLayout" android:layout_marginTop="40dp"
             android:onClick="getBmiButtonClick"/>
+
     <Button
             android:text="@string/GET_ADVICE_LABEL_FIELD"
             android:layout_width="126dp"
             android:layout_height="48dp" android:id="@+id/getAdviceButton"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/tableLayout"
-            app:layout_constraintStart_toEndOf="@+id/calcBMIButton" app:layout_constraintHorizontal_bias="0.795"
-            android:layout_marginTop="92dp" android:onClick="getAdviceButtonPress"/>
-
+            app:layout_constraintStart_toEndOf="@+id/calcBMIButton" app:layout_constraintHorizontal_bias="0.867"
+            android:layout_marginTop="40dp" android:onClick="getAdviceButtonPress"/>
     <TextView
         android:id="@+id/bmiView"
         android:layout_width="349dp"

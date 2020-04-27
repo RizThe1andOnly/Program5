@@ -32,7 +32,7 @@ public class BMI {
      * Constructor for class which will create a BMI object by taking user weight and height as arguments.
      * This method will only store the value in fields, to get BMI values or advice the
      * @param weight weight of the user either in pounds or kilograms
-     * @param height height of the user either in inches or centimeters
+     * @param height height of the user either in inches or meters
      * @param isMetric are the given units in metric units or not (english units)
      *
      * @author Rizwan Chowdhury
@@ -56,10 +56,6 @@ public class BMI {
         double adjustedHeight=this.userHeight;
         if(!this.isMetric){
             adjustedWeight = adjustedWeight * WEIGHT_ADJUSTMENT_FOR_POUNDS;
-        }
-        if(this.isMetric){
-            //cm to m
-            adjustedHeight=adjustedHeight/100;
         }
 
         double bmiVal = adjustedWeight/(adjustedHeight*adjustedHeight);

@@ -6,9 +6,9 @@
     <string name="GET_ADVICE_LABEL_FIELD">Get Advice</string>
     <string name="WEIGHT_METRIC_HINT">Enter Weight in kilograms(kg)</string>
     <string name="WEIGHT_ENGLISH_HINT">Enter Weight in pounds(lbs)</string>
-    <string name="HEIGHT_METRIC_HINT">Enter Height in centimeters(cm)</string>
+    <string name="HEIGHT_METRIC_HINT">Enter Height in meters(m)</string>
     <string name="HEIGHT_ENGLISH_HINT">Enter Height in inches(in)</string>
-    <string name="UNDERWEIGHT_ADVICE">Underweight</string>
+    <string name="UNDERWEIGHT_ADVICE"> Try to Gain More Weight. Ask your doctor or a \nregistered dietitian for help </string>
     <string name="NORMALWEIGHT_ADVICE">Normal Weight: \nTry Not To Gain More Weight</string>
     <string name="OVERWEIGHT_ADVICE">Over Weight: \nBe sure not to gain more weight.\nLose weight if you have two or more heart disease
         risk factors.\nAsk your doctor or a registered dietitian for help.</string>
@@ -17,5 +17,7 @@
 
     <string name="INVALID_INPUT">Bad Input,Please Try Again</string>
     <string name="ADVICE_BUTTON_PRESS_BEFORE_BMI">Please Press Get BMI button First</string>
-    <string name="ADVICE_SCREEN_TITLE">Advice</string>
+    <string name="ADVICE_SCREEN_TITLE">Advice Based on BMI</string>
+    <string name="METRIC_RADIOBUTTON">kg/m</string>
+    <string name="ENGLISH_RADIOBUTTON">lb/in</string>
 </resources>
